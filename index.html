@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Ifeanyi Aladi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+          tomato: 'hsl(4, 100%, 67%)',
+          darkSlateGrey: 'hsl(234, 29%, 20%)',
+          charcoalGrey: 'hsl(235, 18%, 26%)',
+          grey: 'hsl(231, 7%, 60%)',
+          white: 'hsl(0, 0%, 100%)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      padding: 0;
+      margin:0;
+      font-family: Roboto;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .blur-bg {
+        background: linear-gradient(90deg, #FF5379 0%, #FE693D 100%);
+        filter: blur(18.5px);
+    }
+
+    .btn-overlay {
+      display: none;
+    }
+
+    a:hover + .btn-overlay {
+      display: block;
+    }
+
+    button:hover
+{
+    /* ff 3.6+ */
+    background: -moz-linear-gradient(90deg, rgba(255, 83, 121, 1) 0%, rgba(255, 105, 60, 1) 100%); 
+
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-linear-gradient(90deg, rgba(255, 83, 121, 1) 0%, rgba(255, 105, 60, 1) 100%);
+
+    /* opera 11.10+ */
+    background: -o-linear-gradient(90deg, rgba(255, 83, 121, 1) 0%, rgba(255, 105, 60, 1) 100%);
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF693C', endColorstr='#FF5379', GradientType=0 );
+
+    /* ie 10+ */
+    background: -ms-linear-gradient(90deg, rgba(255, 83, 121, 1) 0%, rgba(255, 105, 60, 1) 100%);
+
+    /* global 94%+ browsers support */
+    background: linear-gradient(90deg, rgba(255, 83, 121, 1) 0%, rgba(255, 105, 60, 1) 100%);
+}
+    </style>
+  </head>
+<body class="bg-charcoalGrey h-[100vh] flex justify-center items-center">
+  <main class="sm:rounded-2xl bg-white flex sm:flex-row flex-col-reverse justify-between sm:items-center items-start sm:w-[850px] w-full sm:pb-0 pb-2">
+    <!-- Left DIV -->
+    <div class="flex flex-col py-5 items-start justify-center sm:w-[50%] sm:ml-12 sm:mx-0 mx-5 sm:mr-4">
+      <h2 class="text-[44px] font-[700] text-darkSlateGrey w-[350px]">Stay updated!</h2>
+      <p class="text-[16px] text-darkSlateGrey font-[400] mt-2 sm:w-[400px] w-[350px]">Join 60,000+ product managers receiving monthly updates on:</p>
+      <div class="flex items-start justify-center mt-4">
+        <img src="assets/images/icon-list.svg" class="w-[15px] mr-3 mt-1"/>
+        <p class="text-[16px] text-darkSlateGrey font-[400]  sm:w-[340px] w-[300px]">Product discovery and building what matters</p>
+      </div>
+      <div class="flex items-start justify-center mt-2">
+        <img src="assets/images/icon-list.svg" class="w-[15px] mr-3 mt-1"/>
+        <p class="text-[16px] text-darkSlateGrey font-[400] sm:w-[340px] w-[300px]">Measuring to ensure updates are a success</p>
+      </div>
+      <div class="flex items-start justify-center mt-2">
+        <img src="assets/images/icon-list.svg" class="w-[15px] mr-3 mt-1"/>
+        <p class="text-[16px] text-darkSlateGrey font-[400] sm:w-[340px]">And much more!</p>
+      </div>
+      <form method="POST" id="emailForm">
+        <div class="flex flex-col justify-start items-start mt-8">
+
+          <div class="flex justify-between items-center sm:w-[340px] w-[320px] font-[700] text-[12px]">
+            <label for="email" class="font-[700] text-darkSlateGrey text-[12px] mb-1">Email Address</label>
+            <p id="emailError" class="text-tomato"></p>
+          </div>
+
+          <input type="email" id="email" name="email" placeholder="email@company.com" autocomplete="off" class="p-4 mt-1 border-[1px] border-solid border-grey rounded-lg sm:w-[340px] w-[320px]" />
+        </div>
+        <div class="relative">
+          <a href="success.html"><button type="submit" class="relative z-10 py-3 px-6 mt-5 bg-darkSlateGrey rounded-lg text-white font-[700] text-[14px] sm:w-[340px] w-[320px]">Subscribe to monthly newsletter</button></a>
+          <div class="absolute bottom-0 z-0 w-[340px] h-[20px] blur-bg btn-overlay"></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- 2nd DIV -->
+    <div class="w-[50%] h-full py-5 hidden sm:flex">
+      <img src="./assets/images/illustration-sign-up-desktop.svg" class="w-full cover h-[500px]" />
+    </div>
+
+    <img src="assets/images/illustration-sign-up-mobile.svg" class="sm:hidden cover w-full"/>
+  </main>
+
+  <script>
+    // Get references to form elements
+const emailForm = document.getElementById("emailForm");
+const emailInput = document.getElementById("email");
+const emailError = document.getElementById("emailError");
+
+// Regular expression pattern for a valid email address
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+// Function to validate the email address
+function validateEmail() {
+  const emailValue = emailInput.value.trim();
+
+  if (!emailPattern.test(emailValue)) {
+    emailError.innerHTML = "Valid email required";
+    emailInput.classList.add("error");
+    return false;
+  } else {
+    emailError.textContent = "";
+    emailInput.classList.remove("error");
+    return true;
+  }
+}
+
+// Event listener for form submission
+emailForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the form from submitting by default
+
+  if (validateEmail()) {
+    // If email validation passes, navigate to the new page
+    window.location.href = "success.html"; // Replace with the desired URL
+  }
+});
+  </script>
+</body>
+</html>
